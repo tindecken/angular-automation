@@ -1,0 +1,11 @@
+.toolbar {
+    background-color: antiquewhite
+}
+.statusbar {
+    background-color: beige;
+    height: 25px;
+}
+
+:host > div {
+    height: 100%;
+}
