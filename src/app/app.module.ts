@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatRadioModule} from '@angular/material/radio'
 import {MatSelectModule} from '@angular/material/select'
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import {MatSelectModule} from '@angular/material/select'
     MatSidenavModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
