@@ -1,5 +1,12 @@
-<div fxLayout="column">
-  <app-toolbar class="toolbar"></app-toolbar>
-  <div fxFlex>Content</div>
-  <app-statusbar class="statusbar"></app-statusbar>
-</div>
+<mat-sidenav-container class="example-container" [hasBackdrop]="true" style="height: 100%">
+  <mat-sidenav mode="over" #drawer>
+    <app-setting></app-setting>
+  </mat-sidenav>
+  <mat-sidenav-content fxLayout="column">
+    <app-toolbar (event)="drawer.toggle()"></app-toolbar>
+    <div fxLayout="column" fxFlex>
+      <div fxFlex>Content</div>
+      <app-statusbar class="statusbar"></app-statusbar>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

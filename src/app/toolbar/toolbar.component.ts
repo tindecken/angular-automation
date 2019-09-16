@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,9 +7,16 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  constructor() { }
+  @Output() event: EventEmitter<void>;
+  constructor() {
+    this.event = new EventEmitter();
+  }
 
   ngOnInit() {
+  }
+
+  toggle() {
+    this.event.emit();
   }
 
 }
