@@ -18,5 +18,4 @@ export class ToolbarComponent implements OnInit {
   toggle() {
     this.event.emit();
   }
-
 }
