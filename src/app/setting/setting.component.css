@@ -1,17 +1,17 @@
-.example-card {
+.theme-card {
   max-width: 400px;
   min-width: 300px;
 }
 
-.example-header-image {
+.theme-header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
 }
-.example-radio-group {
+.radio-group {
   display: flex;
   flex-direction: column;
   margin: 15px 0;
 }
-.example-radio-button {
-    margin: 8px;
-  }
+.radio-button {
+  margin: 8px;
+}
