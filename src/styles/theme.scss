@@ -7,12 +7,27 @@
 @include mat-core();
 
 // Define the default theme (same as the example above).
-$candy-app-primary: mat-palette($mat-indigo);
-$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
-$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent);
+$deepPurple-app-primary: mat-palette($mat-deep-purple);
+$deepPurple-app-accent:  mat-palette($mat-amber);
+$deepPurple-app-theme:   mat-light-theme($deepPurple-app-primary, $deepPurple-app-accent);
 
 // Include the default theme styles.
-@include angular-material-theme($candy-app-theme);
+@include angular-material-theme($deepPurple-app-theme);
+
+// Define the default theme (same as the example above).
+$indigo-app-primary: mat-palette($mat-indigo);
+$indigo-app-accent:  mat-palette($mat-pink);
+$indigo-app-theme:   mat-light-theme($indigo-app-primary, $indigo-app-accent);
+
+// Define the default theme (same as the example above).
+$pink-app-primary: mat-palette($mat-pink);
+$pink-app-accent:  mat-palette($mat-blue-grey);
+$pink-app-theme:   mat-light-theme($pink-app-primary, $pink-app-accent);
+
+// Define the default theme (same as the example above).
+$purple-app-primary: mat-palette($mat-purple);
+$purple-app-accent:  mat-palette($mat-green);
+$purple-app-theme:   mat-light-theme($purple-app-primary, $purple-app-accent);
 
 
 // Define an alternate dark theme.
@@ -24,6 +39,18 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 // Include the alternative theme styles inside of a block with a CSS class. You can make this
 // CSS class whatever you want. In this example, any component inside of an element with
 // `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
-.unicorn-dark-theme {
-  @include angular-material-theme($candy-app-theme);
+.deepPurple_amber {
+  @include angular-material-theme($deepPurple-app-theme);
+}
+
+.indigo_pink {
+  @include angular-material-theme($indigo-app-theme);
+}
+
+.pink_blueGrey {
+  @include angular-material-theme($pink-app-theme);
+}
+
+.purple_green {
+  @include angular-material-theme($purple-app-theme);
 }
