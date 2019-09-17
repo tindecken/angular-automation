@@ -14,12 +14,20 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<Theme>) {}
 
   ngOnInit(): void {
+    if(localStorage.getItem('themeCodeName')){
+      this.selectedTheme = {
+        codeName: localStorage.getItem('themeCodeName'),
+        name: localStorage.getItem('themeName')
+      }
+    }
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.store
       .select("theme")
       .subscribe(val => {
         this.selectedTheme = val
+        localStorage.setItem('themeCodeName', this.selectedTheme.codeName)
+        localStorage.setItem('themeName', this.selectedTheme.name)
       });
   }
 }
