@@ -9,8 +9,8 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { StatusbarComponent } from './statusbar/statusbar.component';
 import { SettingComponent } from './setting/setting.component';
-import { TestplanComponent } from './testplan/testplan.component';
-import { TestlabComponent } from './testlab/testlab.component';
+import { TestplantreeComponent } from './testplantree/testplantree.component';
+import { TestruntreeComponent } from './testruntree/testruntree.component';
 import { HomeComponent } from './home/home.component';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -22,6 +22,7 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatRadioModule} from '@angular/material/radio'
 import {MatSelectModule} from '@angular/material/select'
 import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs'
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -36,8 +37,8 @@ import { ContainerComponent } from './container/container.component';
     ToolbarComponent,
     StatusbarComponent,
     SettingComponent,
-    TestplanComponent,
-    TestlabComponent,
+    TestplantreeComponent,
+    TestruntreeComponent,
     HomeComponent,
     ContainerComponent,
   ],
@@ -57,6 +58,7 @@ import { ContainerComponent } from './container/container.component';
     MatRadioModule,
     MatSelectModule,
     MatCardModule,
+    MatTabsModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

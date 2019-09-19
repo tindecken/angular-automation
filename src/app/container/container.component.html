@@ -1,20 +1,14 @@
 <div class="container">
     <div class="split-example ex-percent" style="height: 100%">
-        <as-split unit="percent" [direction]="direction" (dragEnd)="dragEnd('percent', $event)" #split="asSplit" gutterSize='5'>
+        <as-split unit="percent" [direction]="direction" (dragEnd)="dragEnd('percent', $event)" #split="asSplit"
+            gutterSize='5'>
             <as-split-area size="30" #area1="asSplitArea">
-                <app-testplan></app-testplan> 
+                <mat-tab-group color="primary" mat-stretch-tabs>
+                    <mat-tab label="Test Plan"><app-testplantree></app-testplantree></mat-tab>
+                    <mat-tab label="Test Run"><app-testruntree></app-testruntree></mat-tab>
+                </mat-tab-group>
             </as-split-area>
-            <as-split-area size="70" #area2="asSplitArea">
-                <h5>Initial size: <b>70%</b></h5>
-                <h5>Current size: <b>{{ sizes.percent.area2 }}%</b></h5>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                    sed quia consequuntur magni dolores eodolor sit amet, consectetur, adipisci velit, sed quia non
-                    numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad
-                    minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
-                    commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
-                    molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+            <as-split-area size="70" #area2="asSplitArea" minSize="40">
             </as-split-area>
         </as-split>
     </div>

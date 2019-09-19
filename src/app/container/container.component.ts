@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { SplitComponent, SplitAreaDirective } from 'angular-split';
-import { AComponent } from './AComponent';
 
 @Component({
   selector: 'app-container',
@@ -11,7 +10,7 @@ import { AComponent } from './AComponent';
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.css']
 })
-export class ContainerComponent extends AComponent implements OnInit {
+export class ContainerComponent implements OnInit {
   @ViewChild('split', { static: false }) split: SplitComponent;
   @ViewChild('area1', { static: false }) area1: SplitAreaDirective;
   @ViewChild('area2', { static: false }) area2: SplitAreaDirective;
@@ -30,13 +29,6 @@ export class ContainerComponent extends AComponent implements OnInit {
   }
 
   constructor() {
-    super();
-
-    setTimeout(() => {
-      console.log('>>> split > ', this.split);
-      console.log('>>> area1 > ', this.area1);
-      console.log('>>> area2 > ', this.area2);
-    }, 1000);
   }
 
   dragEnd(unit, { sizes }) {
