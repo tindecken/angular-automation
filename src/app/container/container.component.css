@@ -1,0 +1,13 @@
+.container {
+    height: 100%;
+}
+
+.split-example-page {
+    display: flex;
+    width: 100%;
+}
+.split-example {
+    /* height: 300px; */
+    margin: 0px;
+}
+

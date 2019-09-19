@@ -5,8 +5,10 @@
   <mat-sidenav-content fxLayout="column">
     <app-toolbar (event)="drawer.toggle()"></app-toolbar>
     <div fxLayout="column" fxFlex>
-      <div fxFlex>Content</div>
-      <app-statusbar class="statusbar"></app-statusbar>
+      <div fxFlex>
+        <app-container></app-container>
+      </div>
+      <app-statusbar></app-statusbar>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

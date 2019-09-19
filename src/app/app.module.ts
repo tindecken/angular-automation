@@ -26,6 +26,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { ContainerComponent } from './container/container.component';
 
 
 
@@ -38,9 +39,9 @@ import { environment } from '../environments/environment';
     TestplanComponent,
     TestlabComponent,
     HomeComponent,
+    ContainerComponent,
   ],
   imports: [
-    
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -63,7 +64,8 @@ import { environment } from '../environments/environment';
         strictActionImmutability: true
       }
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    AngularSplitModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
