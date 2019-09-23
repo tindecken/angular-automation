@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       else {
         this._snackBar.open(`Login successfully !`, null, { duration: 2000})
         this.loginSuccess(res.id_token)
-        this.route.navigate(['/home'])
+        this.route.navigate(['home'])
       }
     })
   }

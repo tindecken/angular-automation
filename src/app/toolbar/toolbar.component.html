@@ -1,5 +1,11 @@
 <mat-toolbar color="primary">
   <span class="fill-remaining-space"></span>
+  <span>
+    Hi, {{user.name}}
+  </span>
+  <button mat-button mat-icon-button (click)="logout()">
+    <mat-icon aria-hidden="false" aria-label="Logut">exit_to_app</mat-icon>
+  </button>  
   <button mat-button mat-icon-button (click)="toggle()">
     <mat-icon aria-hidden="false" aria-label="Settings">settings_applications</mat-icon>
   </button>
