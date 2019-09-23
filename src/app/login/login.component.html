@@ -8,7 +8,6 @@
     <input matInput placeholder="Password" formControlName="password">
   </mat-form-field>
   <div fxLayout="row" fxLayoutAlign="end start" fxLayoutGap="14px">
-    <button mat-stroked-button color="primary" (click)="clear()">Clear</button>
     <button mat-stroked-button color="primary" (click)="login()" [disabled]="form.invalid">Login</button>
   </div>
 </form>

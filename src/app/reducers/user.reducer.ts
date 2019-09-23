@@ -3,19 +3,11 @@ import * as UserActions from '../actions/user.actions'
 import { User } from '../classes/user'
 
 
-export const initialUser: User = {
-  name: '',
-  email: ''
-}
+export const initialUser: User = User.from(localStorage.token)
 
 const userReducer = createReducer(
   initialUser,
-  on(UserActions.userLogin, (state, { user }) => ({
-    ...user
-  })),
-  on(UserActions.userLogout, (state, { user }) => ({
-  ...user
-  }))
+  on(UserActions.userLogout, (state) => null)
 )
 
 export function reducer(state: User | undefined, action: Action) {

@@ -4,7 +4,8 @@ import { LoginService } from '../login.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { User } from '../classes/user';
-import { userLogin, userLogout } from '../actions/user.actions';
+import { userLogout } from '../actions/user.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +19,12 @@ export class LoginComponent implements OnInit {
     private builder: FormBuilder,
     private loginService: LoginService,
     private _snackBar: MatSnackBar,
-    private store: Store<User>
+    private store: Store<User>,
+    private route: Router
   ) { }
 
   ngOnInit() {
+    
     this.form = this.builder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -37,12 +40,9 @@ export class LoginComponent implements OnInit {
       else {
         this._snackBar.open(`Login successfully !`, null, { duration: 2000})
         this.loginSuccess(res.id_token)
-        this.store.dispatch(userLogin(User.from(res.id_token))
+        this.route.navigate(['/home'])
       }
     })
-  }
-  clear() {
-    this.form.reset()
   }
   loginFailed(){
     delete localStorage.token
