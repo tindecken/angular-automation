@@ -5,7 +5,7 @@
     <mat-error *ngIf="form.get('username').hasError">required</mat-error>
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Password" formControlName="password">
+    <input matInput placeholder="Password" formControlName="password"  type="password">
   </mat-form-field>
   <div fxLayout="row" fxLayoutAlign="end start" fxLayoutGap="14px">
     <button mat-stroked-button color="primary" (click)="login()" [disabled]="form.invalid">Login</button>

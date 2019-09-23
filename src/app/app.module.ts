@@ -12,7 +12,7 @@ import { SettingComponent } from './setting/setting.component';
 import { TestplantreeComponent } from './testplantree/testplantree.component';
 import { TestruntreeComponent } from './testruntree/testruntree.component';
 import { HomeComponent } from './home/home.component';
-
+import {MatCheckboxModule} from '@angular/material/checkbox'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button'
 import {MatIconModule} from '@angular/material/icon'
@@ -25,6 +25,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs'
 import {MatInputModule} from '@angular/material/input'
 import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatTreeModule} from '@angular/material/tree'
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -66,6 +67,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     MatInputModule,
     MatSnackBarModule,
+    MatTreeModule,
+    MatCheckboxModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
