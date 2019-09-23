@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestplantreeService } from '../testplantree.service';
 
 @Component({
   selector: 'app-testplantree',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestplantreeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private testplantreeService: TestplantreeService) { }
 
   ngOnInit() {
   }

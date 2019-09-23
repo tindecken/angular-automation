@@ -23,11 +23,15 @@ import {MatRadioModule} from '@angular/material/radio'
 import {MatSelectModule} from '@angular/material/select'
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs'
+import {MatInputModule} from '@angular/material/input'
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ContainerComponent } from './container/container.component';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -41,6 +45,7 @@ import { ContainerComponent } from './container/container.component';
     TestruntreeComponent,
     HomeComponent,
     ContainerComponent,
+    LoginComponent,
   ],
   imports: [
     FormsModule,
@@ -59,6 +64,8 @@ import { ContainerComponent } from './container/container.component';
     MatSelectModule,
     MatCardModule,
     MatTabsModule,
+    MatInputModule,
+    MatSnackBarModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -67,7 +74,8 @@ import { ContainerComponent } from './container/container.component';
       }
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    AngularSplitModule.forRoot()
+    AngularSplitModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
