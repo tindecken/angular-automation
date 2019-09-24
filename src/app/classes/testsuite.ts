@@ -7,15 +7,14 @@ export class TestSuite {
     tsName: string;
     tsDescription: string;
     tsAuthor: string;
-    lstTestGroup: TestGroup[];
-    lstTestCase: TestCase[];
+    tsTestGroups: TestGroup[];
+    tsTestCases: TestCase[];
     tsClient: TestClient[];
     tsStatus: TestStatus
-    tsXmlPath: string; //path to xml
     selectedTestGroup: TestGroup[];
     selectedTestCase: TestCase[];
     workItem: string;
-    constructor(tsXmlPath: string){
-        
+    constructor(name: string){
+        this.tsName = name
     }
 }

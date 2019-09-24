@@ -1250,6 +1250,15 @@ angular-split@^3.0.2:
   dependencies:
     tslib "^1.9.0"
 
+angular-tree-component@^8.4.0:
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/angular-tree-component/-/angular-tree-component-8.4.0.tgz#1e36118e4a5c0e573764a2a58efd66ec793fdc20"
+  integrity sha512-+3TKGI2Ta0DIfrt2urR6YKDPh7Xv/zuFG3YxWMNAVJY6SPlX9tFT8+pBxzXmcTgI2MDZT7M3Ft6eifQdt4krBw==
+  dependencies:
+    lodash "^4.17.11"
+    mobx "^3.6.2"
+    mobx-angular "2.1.1"
+
 ansi-colors@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
@@ -4994,6 +5003,16 @@ mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1:
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+mobx-angular@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/mobx-angular/-/mobx-angular-2.1.1.tgz#d5e36539acb200186dd5a1170806b4776b9a8b88"
+  integrity sha1-1eNlOayyABht1aEXCAa0d2uai4g=
+
+mobx@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.6.2.tgz#fb9f5ff5090539a1ad54e75dc4c098b602693320"
+  integrity sha512-Dq3boJFLpZEvuh5a/MbHLUIyN9XobKWIb0dBfkNOJffNkE3vtuY0C9kSDVpfH8BB0BPkVw8g22qCv7d05LEhKg==
 
 move-concurrently@^1.0.1:
   version "1.0.1"

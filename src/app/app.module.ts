@@ -33,6 +33,7 @@ import { environment } from '../environments/environment';
 import { ContainerComponent } from './container/container.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TreeModule } from 'angular-tree-component';
 
 
 
@@ -69,6 +70,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSnackBarModule,
     MatTreeModule,
     MatCheckboxModule,
+    TreeModule.forRoot(),
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
