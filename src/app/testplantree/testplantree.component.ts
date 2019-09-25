@@ -2,7 +2,9 @@ import {Component, OnInit } from '@angular/core';
 import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-component';
 import { TestSuite } from '../classes/testsuite';
 import { Category } from '../classes/category';
-
+import { TestPlan } from '../classes/testplan';
+import { testPlanMock } from '../mocks/testplan'
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-testplantree',
@@ -10,20 +12,27 @@ import { Category } from '../classes/category';
   styleUrls: ['./testplantree.component.css'],
 })
 export class TestplantreeComponent implements OnInit{
-  categories: Category[]
-  testsuites: TestSuite[]
+  testPlan: TestPlan = testPlanMock
+  testPlanTree: any
+  testPlanJson: any
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.testsuites = [{
-      tsName: 'Pending';
-    }]
-    var tsPending = new TestSuite('Pending')
-    var tsApproval = new TestSuite('Approval')
-    var catPayment = new Category('Payment', tsPending)
-    catPayment.catTestSuites.push(tsApproval)
-    console.log(catPayment)
+    this.testPlanJson = JSON.stringify(this.testPlan)
+    console.log(this.testPlanJson)
+    this.testPlanTree = this.testPlan.tpCategories.map((cat) => ({
+      ...cat,
+      id: cat.catId,
+      name: cat.catName,
+      children: cat.catTestSuites.map((ts) => ({
+        ...ts,
+        id: ts.tsId,
+        name: ts.tsName
+      }))
+    }))
+    console.log(this.testPlanTree)
   }
+
+  onEvent = ($event) => console.log($event);
+
   nodes = [
     {
       id: 1,

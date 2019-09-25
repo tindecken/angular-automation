@@ -4,6 +4,7 @@ import { TestClient } from './testclient'
 import { TestCase } from './testcase'
 
 export class TestSuite {
+    tsId: number;
     tsName: string;
     tsDescription: string;
     tsAuthor: string;
@@ -11,10 +12,17 @@ export class TestSuite {
     tsTestCases: TestCase[];
     tsClient: TestClient[];
     tsStatus: TestStatus
-    selectedTestGroup: TestGroup[];
-    selectedTestCase: TestCase[];
-    workItem: string;
-    constructor(name: string){
-        this.tsName = name
+    workItem: string[];
+    constructor(tsId?: number, tsName?: string, tsDescription?: string, tsAuthor?: string, tsTestGroups?: TestGroup[], 
+                tsTestCases?: TestCase[], tsClient?: TestClient[], tsStatus?: TestStatus, tsWorkItem?: string[]){
+        this.tsId = tsId
+        this.tsName = tsName
+        this.tsDescription = tsDescription
+        this.tsAuthor = tsAuthor
+        this.tsTestGroups = tsTestGroups
+        this.tsTestCases = tsTestCases
+        this.tsClient = tsClient
+        this.tsStatus = tsStatus
+        this.workItem = tsWorkItem
     }
 }
