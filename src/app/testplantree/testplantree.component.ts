@@ -14,10 +14,7 @@ import * as _ from 'lodash'
 export class TestplantreeComponent implements OnInit{
   testPlan: TestPlan = testPlanMock
   testPlanTree: any
-  testPlanJson: any
   ngOnInit(): void {
-    this.testPlanJson = JSON.stringify(this.testPlan)
-    console.log(this.testPlanJson)
     this.testPlanTree = this.testPlan.tpCategories.map((cat) => ({
       ...cat,
       id: cat.catId,

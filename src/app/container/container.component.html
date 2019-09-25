@@ -3,7 +3,7 @@
         <as-split unit="percent" [direction]="direction" (dragEnd)="dragEnd('percent', $event)" #split="asSplit"
             gutterSize='5'>
             <as-split-area size="30" #area1="asSplitArea">
-                <mat-tab-group color="primary" mat-stretch-tabs>
+                <mat-tab-group color="primary" mat-stretch-tabs style="height: 100%">
                     <mat-tab label="Test Plan"><app-testplantree></app-testplantree></mat-tab>
                     <mat-tab label="Test Run"><app-testruntree></app-testruntree></mat-tab>
                 </mat-tab-group>

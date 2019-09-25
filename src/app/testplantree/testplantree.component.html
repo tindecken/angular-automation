@@ -1,1 +1,5 @@
-<tree-root [nodes]="testPlanTree" [options]="options" (activate)="onEvent($event)"></tree-root>
+<div class="testPlanTree">
+    <input id="filter" #filter (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="filter nodes"/>
+    <button (click)="tree.treeModel.clearFilter()">Clear Filter</button>
+  <tree-root #tree [nodes]="testPlanTree" [options]="options" (activate)="onEvent($event)"></tree-root>
+</div>
