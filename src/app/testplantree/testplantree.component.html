@@ -7,5 +7,22 @@
     </button>
     <!-- <button (click)="tree.treeModel.clearFilter(); filter.value=''">Clear Filter</button> -->
   </mat-form-field>
-  <tree-root #tree [nodes]="testPlanTree" [options]="options" (activate)="onEvent($event)"></tree-root>
+  <tree-root #tree [nodes]="testPlanTree" [options]="options" (activate)="onActivate($event)" (focus)="onFocus($event)" [matMenuTriggerFor]="menu">
+      
+  </tree-root>
+  <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+  
 </div>

@@ -26,6 +26,7 @@ import {MatTabsModule} from '@angular/material/tabs'
 import {MatInputModule} from '@angular/material/input'
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {MatTreeModule} from '@angular/material/tree'
+import {MatMenuModule} from '@angular/material/menu'
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -70,6 +71,7 @@ import { TreeModule } from 'angular-tree-component';
     MatSnackBarModule,
     MatTreeModule,
     MatCheckboxModule,
+    MatMenuModule,
     TreeModule.forRoot(),
     StoreModule.forRoot(reducers, {
       metaReducers,
