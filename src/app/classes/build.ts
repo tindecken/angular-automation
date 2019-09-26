@@ -1,19 +1,16 @@
-import { TestSuite } from './testsuite';
 import { User } from './user';
-import { Type } from 'class-transformer'
+import { TestSuite } from './testsuite';
 
-export class Category {
+export class Build {
+    _id: string;
     type: string;
+    name: string;
     status: string;
     runningTime: number;
-    workID: string;
-    _id: string;
-    name: string;
     description: string;
-    @Type(() => User)
     owner: User;
     createdAt: Date;
-    @Type(() => TestSuite)
+    updatedAt: Date;
     testSuites: TestSuite[];
     // constructor(id?: number, name?: string, testsuite?: TestSuite){
     //     this.catId = id
