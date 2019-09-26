@@ -1,5 +1,11 @@
 <div class="testPlanTree">
-    <input id="filter" #filter (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="filter nodes"/>
-    <button (click)="tree.treeModel.clearFilter()">Clear Filter</button>
+  <mat-form-field class="example-form-field">
+    <input matInput type="text" id="filter" #filter (keyup)="tree.treeModel.filterNodes(filter.value)"
+      placeholder="Filter" [(ngModel)]="filterValue"/>
+    <button mat-button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="tree.treeModel.clearFilter(); filterValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <!-- <button (click)="tree.treeModel.clearFilter(); filter.value=''">Clear Filter</button> -->
+  </mat-form-field>
   <tree-root #tree [nodes]="testPlanTree" [options]="options" (activate)="onEvent($event)"></tree-root>
 </div>

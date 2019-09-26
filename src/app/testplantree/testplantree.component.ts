@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-component';
 import { TestSuite } from '../classes/testsuite';
 import { Category } from '../classes/category';
@@ -11,9 +11,17 @@ import * as _ from 'lodash'
   templateUrl: './testplantree.component.html',
   styleUrls: ['./testplantree.component.css'],
 })
-export class TestplantreeComponent implements OnInit{
+export class TestplantreeComponent implements OnInit, AfterViewInit{
+  @ViewChild('tree', {static: false}) tree;
+  filterValue: string = ''
   testPlan: TestPlan = testPlanMock
   testPlanTree: any
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    this.tree.treeModel.expandAll();
+    
+  }
   ngOnInit(): void {
     this.testPlanTree = this.testPlan.tpCategories.map((cat) => ({
       ...cat,
