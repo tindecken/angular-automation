@@ -23,7 +23,7 @@ export class TestplantreeService extends BaseService {
   getCategories(): Observable<Category[]>{
     var headers = {
       headers: new HttpHeaders()
-        .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjZjRjMjFkZjM2NDIxNTJhOGQwZTBlNCIsIm5hbWUiOiJ0aW5kZWNrZW4iLCJlbWFpbCI6InRpbmRlY2tlbkBnbWFpbC5jb20iLCJzY29wZSI6ImFkbWluIiwiaWF0IjoxNTY5NDcwMjk0LCJleHAiOjE1Njk1MTM0OTR9.e6vLqcQlDieBfwc6Wjoo08aiJAN2OYH6mmPstbWaJ6k')
+        .set('authorization', localStorage.token)
     }
     return this.http.get<Category[]>(`${this.url}/categories/testsuites/processed`, headers)
   }
