@@ -1,3 +1,7 @@
 .testPlanTree {
   padding: 0px 5px 5px 10px
 }
+
+:host {
+  height: 100%;
+}

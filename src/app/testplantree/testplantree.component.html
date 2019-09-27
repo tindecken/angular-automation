@@ -1,28 +1,11 @@
 <div class="testPlanTree">
-  <mat-form-field class="example-form-field">
+  <!-- <mat-form-field class="example-form-field">
     <input matInput type="text" id="filter" #filter (keyup)="tree.treeModel.filterNodes(filter.value)"
       placeholder="Filter" [(ngModel)]="filterValue"/>
     <button mat-button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="tree.treeModel.clearFilter(); filterValue=''">
       <mat-icon>close</mat-icon>
     </button>
-    <!-- <button (click)="tree.treeModel.clearFilter(); filter.value=''">Clear Filter</button> -->
-  </mat-form-field>
-  <tree-root #tree [nodes]="testPlanTree" [options]="options" (activate)="onActivate($event)" (focus)="onFocus($event)" [matMenuTriggerFor]="menu">
-      
-  </tree-root>
-  <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voice mail</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-      </button>
-    </mat-menu>
-  
+  </mat-form-field> -->
+  <p-tree [value]="testPlanTree" [contextMenu]="cm" [filter]="true"></p-tree>
+  <p-contextMenu #cm [model]="items" appendTo="body"></p-contextMenu>
 </div>

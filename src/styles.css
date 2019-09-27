@@ -2,7 +2,6 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~angular-tree-component/dist/angular-tree-component.css';
 
-
 html, body {
     height: 100%;
 }

@@ -34,9 +34,8 @@ import { environment } from '../environments/environment';
 import { ContainerComponent } from './container/container.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TreeModule } from 'angular-tree-component';
-
-
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {TreeModule} from 'primeng/tree';
 
 @NgModule({
   declarations: [
@@ -72,7 +71,8 @@ import { TreeModule } from 'angular-tree-component';
     MatTreeModule,
     MatCheckboxModule,
     MatMenuModule,
-    TreeModule.forRoot(),
+    TreeModule,
+    ContextMenuModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

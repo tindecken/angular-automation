@@ -25,7 +25,10 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/styles/theme.scss"
+              "src/styles/theme.scss",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
             ],
             "scripts": []
           },
