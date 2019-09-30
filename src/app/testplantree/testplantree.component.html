@@ -1,11 +1,8 @@
 <div class="testPlanTree">
-  <!-- <mat-form-field class="example-form-field">
-    <input matInput type="text" id="filter" #filter (keyup)="tree.treeModel.filterNodes(filter.value)"
-      placeholder="Filter" [(ngModel)]="filterValue"/>
-    <button mat-button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="tree.treeModel.clearFilter(); filterValue=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field> -->
-  <p-tree [value]="testPlanTree" [contextMenu]="cm" [filter]="true"></p-tree>
+  <p-tree [value]="testPlanTree" [contextMenu]="cm" [filter]="true" [style]="{'width': '100%', 'background': 'initial', 'border': 'none'}">
+      <ng-template let-node  pTemplate="default">
+          <input [(ngModel)]="node.name" type="text" style="width:100%">
+      </ng-template>
+  </p-tree>
   <p-contextMenu #cm [model]="items" appendTo="body"></p-contextMenu>
 </div>

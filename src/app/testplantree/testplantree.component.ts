@@ -64,7 +64,7 @@ export class TestplantreeComponent implements OnInit {
   }
 
   options: ITreeOptions = {
-    displayField: 'name',
+    displayField: ' ',
     isExpandedField: 'expanded',
     idField: 'id',
     actionMapping: {
