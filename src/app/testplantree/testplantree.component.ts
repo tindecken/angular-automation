@@ -38,14 +38,28 @@ export class TestplantreeComponent implements OnInit {
             ...cat,
             id: cat._id,
             label: cat.name,
-            "expandedIcon": "fa fa-folder-open",
-            "collapsedIcon": "fa fa-folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder",
             children: cat.testSuites.map((ts) => ({
               ...ts,
               id: ts._id,
               label: ts.name,
-              "expandedIcon": "fa fa-folder-open",
-              "collapsedIcon": "fa fa-folder"
+              "expandedIcon": "pi pi-align-justify",
+              "collapsedIcon": "pi pi-align-justify",
+              children: ts.testGroups.map((tg) => ({
+                ...tg,
+                id: tg._id,
+                label: tg.name,
+                "expandedIcon": "pi pi-clone",
+                "collapsedIcon": "pi pi-clone",
+                children: tg.testCases.map((tc) => ({
+                  ...tc,
+                  id: tc._id,
+                  label: tc.name,
+                  "expandedIcon": "pi pi-file-o",
+                  "collapsedIcon": "pi pi-file-o",
+                }))
+              }))
             }))
           }));
         }),
