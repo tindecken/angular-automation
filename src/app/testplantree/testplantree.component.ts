@@ -17,9 +17,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 export class TestplantreeComponent implements OnInit {
   @ViewChild('menu', { static: false }) trigger: MatMenuTrigger;
   filterValue: string = ''
-  testPlanTree: any = [{
-    name: ''
-  }]
+  categories: Category[] = []
   items = [
     { label: 'View', icon: 'fa fa-search', command: () => {}},
     { label: 'Unselect', icon: 'fa fa-close', command: () => {}}
@@ -38,78 +36,35 @@ export class TestplantreeComponent implements OnInit {
             ...cat,
             id: cat._id,
             label: cat.name,
-            "expandedIcon": "pi pi-folder-open",
-            "collapsedIcon": "pi pi-folder",
+            "expandedIcon": `pi pi-folder-open ${cat.status.toLowerCase()}`,
+            "collapsedIcon": `pi pi-folder ${cat.status.toLowerCase()}`,
             children: cat.testSuites.map((ts) => ({
               ...ts,
               id: ts._id,
               label: ts.name,
-              "expandedIcon": "pi pi-align-justify",
-              "collapsedIcon": "pi pi-align-justify",
+              "expandedIcon": `pi pi-align-justify ${ts.status.toLowerCase()}`,
+              "collapsedIcon": `pi pi-align-justify ${ts.status.toLowerCase()}`,
               children: ts.testGroups.map((tg) => ({
                 ...tg,
                 id: tg._id,
                 label: tg.name,
-                "expandedIcon": "pi pi-clone",
-                "collapsedIcon": "pi pi-clone",
+                "expandedIcon": `pi pi-clone ${tg.status.toLowerCase()}`,
+                "collapsedIcon": `pi pi-clone ${tg.status.toLowerCase()}`,
                 children: tg.testCases.map((tc) => ({
                   ...tc,
                   id: tc._id,
                   label: tc.name,
-                  "expandedIcon": "pi pi-file-o",
-                  "collapsedIcon": "pi pi-file-o",
+                  "expandedIcon": `pi pi-file-o ${tc.status.toLowerCase()}`,
+                  "collapsedIcon": `pi pi-file-o ${tc.status.toLowerCase()}`,
                 }))
               }))
             }))
           }));
         }),
       ).subscribe((list: any[]) => {
-        this.testPlanTree = list;
+        this.categories = list;
         this.cdr.detectChanges();
+        console.log(this.categories)
       })
-  }
-
-  onActivate($event) {
-    // TODO: Load testcase into grid
-  }
-
-  onFocus($event) {
-    console.log($event)
-  }
-
-  options: ITreeOptions = {
-    displayField: ' ',
-    isExpandedField: 'expanded',
-    idField: 'id',
-    actionMapping: {
-      mouse: {
-        dblClick: (tree, node, $event) => {
-          if (node.hasChildren) TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
-        },
-        contextMenu: (tree, node, $event) => {
-          this.trigger.openMenu()
-        }
-      },
-      keys: {
-        [KEYS.ENTER]: (tree, node, $event) => {
-          node.expandAll();
-        }
-      }
-    },
-    nodeHeight: 23,
-    allowDrag: (node) => {
-      return true;
-    },
-    allowDrop: (node) => {
-      return true;
-    },
-    allowDragoverStyling: true,
-    levelPadding: 10,
-    useVirtualScroll: true,
-    animateExpand: true,
-    scrollOnActivate: true,
-    animateSpeed: 30,
-    animateAcceleration: 1.2,
-    scrollContainer: document.documentElement // HTML
   }
 }

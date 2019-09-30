@@ -54,3 +54,15 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 .purple_green {
   @include angular-material-theme($purple-app-theme);
 }
+
+.testPlan.ui-tree .ui-tree-container {
+  overflow: hidden;
+}
+
+.testPlan.ui-tree .ui-treenode-icon.fail{
+  color: red !important
+}
+
+.testPlan.ui-tree .ui-treenode-icon.pass{
+  color:green!important
+}

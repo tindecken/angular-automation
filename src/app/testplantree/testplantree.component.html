@@ -1,7 +1,12 @@
 <div class="testPlanTree">
-  <p-tree [value]="testPlanTree" [contextMenu]="cm" [filter]="true" [style]="{'width': '100%', 'background': 'initial', 'border': 'none'}">
-      <ng-template let-node  pTemplate="default">
-          <input [(ngModel)]="node.name" type="text" style="width:100%">
+  <p-tree [value]="categories" [contextMenu]="cm" [filter]="true" 
+    [style]="{'width': '100%', 'background': 'initial', 'border': 'none'}"
+    emptyMessage="" styleClass="testPlan">
+      <ng-template let-node  pTemplate="testcase">
+          <ng-container [ngSwitch]="node.status">
+            <div *ngSwitchCase="'NORUN'" class="norun">{{node.name}} = 1000</div>
+            <div *ngSwitchCase="'PASSED'" class="passed">{{node.name}} + 1</div>
+          </ng-container>
       </ng-template>
   </p-tree>
   <p-contextMenu #cm [model]="items" appendTo="body"></p-contextMenu>
