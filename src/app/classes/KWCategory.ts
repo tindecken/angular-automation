@@ -13,5 +13,4 @@ export class KWCategory {
     keywords: Keyword[];
     @Type(() => KWFeature)
     kwFeatures: KWFeature[];
-  
 }

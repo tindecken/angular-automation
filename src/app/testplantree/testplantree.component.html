@@ -3,10 +3,9 @@
     [style]="{'width': '100%', 'background': 'initial', 'border': 'none'}"
     emptyMessage="" styleClass="testPlan">
       <ng-template let-node  pTemplate="testcase">
-          <ng-container [ngSwitch]="node.status">
-            <div *ngSwitchCase="'NORUN'" class="norun">{{node.name}} = 1000</div>
-            <div *ngSwitchCase="'PASSED'" class="passed">{{node.name}} + 1</div>
-          </ng-container>
+          <div *ngIf="node.primary" class="primary">{{node.name}}</div>
+          <div *ngIf="node.dependOn" class="dependent">{{node.name}}</div>
+          <div *ngIf="!node.dependOn && !node.primary">{{node.name}}</div>
       </ng-template>
   </p-tree>
   <p-contextMenu #cm [model]="items" appendTo="body"></p-contextMenu>

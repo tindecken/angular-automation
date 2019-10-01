@@ -66,3 +66,11 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 .testPlan.ui-tree .ui-treenode-icon.pass{
   color:green!important
 }
+
+.testPlan.ui-tree .primary {
+  color: coral
+}
+
+.testPlan.ui-tree .dependent {
+  color:  royalblue
+}

@@ -11,4 +11,6 @@ export class TestCase {
     primary: boolean
     @Type(() => TestCase)
     dependencies: TestCase[];
+    @Type(() => TestCase)
+    dependOn: TestCase
 }
