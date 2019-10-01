@@ -74,3 +74,7 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 .testPlan.ui-tree .dependent {
   color:  royalblue
 }
+
+.testPlan.ui-tree .ui-treenode-content:focus {
+  outline: none
+}
