@@ -61,10 +61,20 @@ export class TestplantreeService extends BaseService {
         )
       case "testgroup":
         url += `testgroups/${treeNode.id}`
-        break;
+        return this.http.get<TestGroup>(`${url}`, headers)
+        .pipe(
+          map(response => {
+            return plainToClass(TestGroup, response)
+          })
+        )
       case "testcase":
         url += `testcases/${treeNode.id}`
-        break;
+        return this.http.get<TestCase>(`${url}`, headers)
+        .pipe(
+          map(response => {
+            return plainToClass(TestCase, response)
+          })
+        )
     }
     
 
