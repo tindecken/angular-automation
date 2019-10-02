@@ -1,0 +1,8 @@
+<h1 mat-dialog-title><strong>{{ts.name}}</strong></h1>
+<div mat-dialog-content>
+  Are you sure to delete this test suite?
+</div>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end start" fxLayoutGap="14px">
+  <button mat-button mat-stroked-button color="primary" (click)="onNoClick()">CANCEL</button>
+  <button mat-button mat-stroked-button color="primary" (click)="deleteTestSuite()">DELETE</button>
+</div>

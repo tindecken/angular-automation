@@ -79,34 +79,18 @@ export class TestplantreeService extends BaseService {
           )
     }
   }
-  buildMenu(selectedTreeNode): MenuItem[] {
-    let menu: MenuItem[]
-    switch (selectedTreeNode.type) {
-      case "category":
-        menu = [
-          { label: 'Create Test Suite', icon: 'pi pi-plus', command: (event) => { 
-            console.log(event)
-          } },
-        ]
-        break;
-      case "testsuite":
-        menu = [
-          { label: 'View TestSuite', icon: 'fa fa-search', command: () => { } },
-        ]
-        break
-      case "testgroup":
-        menu = [
-          { label: 'View TestGroup', icon: 'fa fa-search', command: () => { } },
-        ]
-        break
-      case "testcase":
-        menu = [
-          { label: 'View TestCase', icon: 'fa fa-search', command: () => { } },
-        ]
-        break
-      default:
-        break;
+  createTestSuite(payload: any){
+    console.log('payload', payload)
+    let headers = {
+      headers: new HttpHeaders()
+        .set('authorization', localStorage.token)
     }
-    return menu
+    return this.http.post<TestSuite>(`${this.url}/testsuites`, {
+      name: payload.name,
+      description: payload.description,
+      workId: payload.workId,
+      categoryId: payload.categoryId
+    }, headers)
+    .pipe(this.handleError())
   }
 }

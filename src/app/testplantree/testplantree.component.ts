@@ -7,6 +7,9 @@ import { TestCase } from '../classes/testcase';
 import { TestGroup } from '../classes/testgroup';
 import { TestSuite } from '../classes/testsuite';
 import * as _ from 'lodash';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { CreateTestSuiteDialogComponent } from './create-test-suite-dialog/create-test-suite-dialog.component';
+import { DeleteTestSuiteDialogComponent } from './delete-test-suite-dialog/delete-test-suite-dialog.component';
 
 @Component({
   selector: 'app-testplantree',
@@ -21,11 +24,12 @@ export class TestplantreeComponent implements OnInit {
   loadingIcon: string = "fa-circle-o-notch"
   selectedNode: TreeNode[]
   selectedObject: TestCase | TestGroup | TestSuite | Category
-  items: any[] = []
+  menu: any[] = []
 
   constructor(
     private testplanService: TestplantreeService,
-    private cdr: ChangeDetectorRef) {
+    private cdr: ChangeDetectorRef,
+    public dialog: MatDialog) {
   }
   onNodeSelect(event){
     this.testplanService.getSelectedNode(event.node).subscribe(node => {
@@ -34,7 +38,59 @@ export class TestplantreeComponent implements OnInit {
   }
 
   onNodeContextMenuSelect(event) {
-    this.items = this.testplanService.buildMenu(event.node)
+    switch (event.node.type) {
+      case "category":
+        this.menu = [
+          { label: 'Create Test Suite', icon: 'pi pi-plus', command: (e) => { 
+            this.testplanService.getSelectedNode(event.node).subscribe(node => {
+              this.selectedObject = node
+              const dialogRef = this.dialog.open(CreateTestSuiteDialogComponent, {
+                width: '600px',
+                data: this.selectedObject
+              })
+  
+              dialogRef.afterClosed().subscribe(result => {
+                console.log('The dialog was closed', result);
+              });
+            })
+          }}
+        ]
+        break;
+      case "testsuite":
+          this.menu = [
+          { label: 'Delete TestSuite', icon: 'pi pi-minus', command: (e) => {
+            this.testplanService.getSelectedNode(event.node).subscribe(node => {
+              this.selectedObject = node
+              const dialogRef = this.dialog.open(DeleteTestSuiteDialogComponent, {
+                width: '600px',
+                data: this.selectedObject
+              })
+              dialogRef.afterClosed().subscribe(result => {
+                console.log('The dialog was closed', result);
+              });
+
+              this.testPlanTree.concat({
+                id: 'zzzz',
+                name: 'zzz'
+              })
+              this.cdr.detectChanges()
+            })
+           } },
+        ]
+        break
+      case "testgroup":
+          this.menu = [
+          { label: 'View TestGroup', icon: 'fa fa-search', command: () => { } },
+        ]
+        break
+      case "testcase":
+          this.menu = [
+          { label: 'View TestCase', icon: 'fa fa-search', command: () => { } },
+        ]
+        break
+      default:
+        break;
+    }
   }
 
   mapToTree(cats: Category[]): any {

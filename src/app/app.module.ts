@@ -27,6 +27,7 @@ import {MatInputModule} from '@angular/material/input'
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {MatTreeModule} from '@angular/material/tree'
 import {MatMenuModule} from '@angular/material/menu'
+import {MatDialogModule} from '@angular/material/dialog'
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -36,6 +37,8 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {TreeModule} from 'primeng/tree';
+import { CreateTestSuiteDialogComponent } from './testplantree/create-test-suite-dialog/create-test-suite-dialog.component';
+import { DeleteTestSuiteDialogComponent } from './testplantree/delete-test-suite-dialog/delete-test-suite-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,8 @@ import {TreeModule} from 'primeng/tree';
     HomeComponent,
     ContainerComponent,
     LoginComponent,
+    CreateTestSuiteDialogComponent,
+    DeleteTestSuiteDialogComponent,
   ],
   imports: [
     FormsModule,
@@ -71,6 +76,7 @@ import {TreeModule} from 'primeng/tree';
     MatTreeModule,
     MatCheckboxModule,
     MatMenuModule,
+    MatDialogModule,
     TreeModule,
     ContextMenuModule,
     StoreModule.forRoot(reducers, {
@@ -85,6 +91,7 @@ import {TreeModule} from 'primeng/tree';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateTestSuiteDialogComponent, DeleteTestSuiteDialogComponent]
 })
 export class AppModule { }
