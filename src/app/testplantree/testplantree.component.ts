@@ -21,21 +21,20 @@ export class TestplantreeComponent implements OnInit {
   loadingIcon: string = "fa-circle-o-notch"
   selectedNode: TreeNode[]
   selectedObject: TestCase | TestGroup | TestSuite | Category
-  items = [
-    { label: 'View', icon: 'fa fa-search', command: () => {}},
-    { label: 'Unselect', icon: 'fa fa-close', command: () => {}}
-  ];
+  items: any[] = []
 
   constructor(
     private testplanService: TestplantreeService,
     private cdr: ChangeDetectorRef) {
   }
   onNodeSelect(event){
-    console.log('event', event.node)
     this.testplanService.getSelectedNode(event.node).subscribe(node => {
       this.selectedObject = node
-      console.log('selectedObject', this.selectedObject)
     })
+  }
+
+  onNodeContextMenuSelect(event) {
+    this.items = this.testplanService.buildMenu(event.node)
   }
 
   mapToTree(cats: Category[]): any {
@@ -81,7 +80,6 @@ export class TestplantreeComponent implements OnInit {
   ngOnInit(): void {
     this.testplanService.getCategories().subscribe(categories => {
       this.categories = categories
-      console.log(this.categories)
       this.testPlanTree = this.mapToTree(this.categories)  
       this.loading = false
       this.cdr.detectChanges()

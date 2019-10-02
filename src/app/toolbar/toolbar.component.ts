@@ -17,7 +17,6 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.user = User.from(localStorage.token)
-    console.log('user', this.user)
   }
 
   toggle() {

@@ -10,6 +10,9 @@ import { Category } from './classes/category';
 import { map } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { TreeNode } from 'primeng/components/common/treenode';
+import { MenuModule } from 'primeng/menu';
+import { MenuItem } from 'primeng/api';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +23,10 @@ export class TestplantreeService extends BaseService {
     super();
   }
 
-  getTestSuitesTree(): Observable<TestSuite[]>{
+  getTestSuitesTree(): Observable<TestSuite[]> {
     return this.http.get<TestSuite[]>(`${this.url}`)
   }
-  getCategories(): Observable<Category[]>{
+  getCategories(): Observable<Category[]> {
     var headers = {
       headers: new HttpHeaders()
         .set('authorization', localStorage.token)
@@ -41,42 +44,69 @@ export class TestplantreeService extends BaseService {
       headers: new HttpHeaders()
         .set('authorization', localStorage.token)
     }
-    console.log(treeNode.type)
     switch (treeNode.type) {
       case "category":
         url += `categories/${treeNode.id}`
         return this.http.get<Category>(`${url}`, headers)
-        .pipe(
-          map(response => {
-            return plainToClass(Category, response)
-          })
-        )
+          .pipe(
+            map(response => {
+              return plainToClass(Category, response)
+            })
+          )
       case "testsuite":
         url += `testsuites/${treeNode.id}`
         return this.http.get<TestSuite>(`${url}`, headers)
-        .pipe(
-          map(response => {
-            return plainToClass(TestSuite, response)
-          })
-        )
+          .pipe(
+            map(response => {
+              return plainToClass(TestSuite, response)
+            })
+          )
       case "testgroup":
         url += `testgroups/${treeNode.id}`
         return this.http.get<TestGroup>(`${url}`, headers)
-        .pipe(
-          map(response => {
-            return plainToClass(TestGroup, response)
-          })
-        )
+          .pipe(
+            map(response => {
+              return plainToClass(TestGroup, response)
+            })
+          )
       case "testcase":
         url += `testcases/${treeNode.id}`
         return this.http.get<TestCase>(`${url}`, headers)
-        .pipe(
-          map(response => {
-            return plainToClass(TestCase, response)
-          })
-        )
+          .pipe(
+            map(response => {
+              return plainToClass(TestCase, response)
+            })
+          )
     }
-    
-
+  }
+  buildMenu(selectedTreeNode): MenuItem[] {
+    let menu: MenuItem[]
+    switch (selectedTreeNode.type) {
+      case "category":
+        menu = [
+          { label: 'Create Test Suite', icon: 'pi pi-plus', command: (event) => { 
+            console.log(event)
+          } },
+        ]
+        break;
+      case "testsuite":
+        menu = [
+          { label: 'View TestSuite', icon: 'fa fa-search', command: () => { } },
+        ]
+        break
+      case "testgroup":
+        menu = [
+          { label: 'View TestGroup', icon: 'fa fa-search', command: () => { } },
+        ]
+        break
+      case "testcase":
+        menu = [
+          { label: 'View TestCase', icon: 'fa fa-search', command: () => { } },
+        ]
+        break
+      default:
+        break;
+    }
+    return menu
   }
 }

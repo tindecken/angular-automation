@@ -1,20 +1,16 @@
 <div class="testPlanTree">
-  <p-tree 
-    [value]="testPlanTree" 
-    [contextMenu]="cm" 
-    [filter]="true" 
-    [style]="{'width': '100%', 'background': 'initial', 'border': 'none', 'border-width': '0'}"
-    emptyMessage="" 
-    styleClass="testPlan"
-    [loading]="loading"
-    selectionMode="single"
-    (onNodeSelect)="onNodeSelect($event)"
-    [(selection)]="selectedNode">
-      <ng-template let-node  pTemplate="testcase">
-          <div *ngIf="node.primary" class="primary">{{node.name}}</div>
-          <div *ngIf="node.dependOn" class="dependent">{{node.name}}</div>
-          <div *ngIf="!node.dependOn && !node.primary">{{node.name}}</div>
-      </ng-template>
+  <p-tree [value]="testPlanTree" [contextMenu]="cm" [filter]="true"
+    [style]="{'width': '100%', 'background': 'initial', 'border': 'none', 'border-width': '0'}" emptyMessage=""
+    styleClass="testPlan" [loading]="loading" selectionMode="single" (onNodeSelect)="onNodeSelect($event)"
+    (onNodeContextMenuSelect)="onNodeContextMenuSelect($event)" [(selection)]="selectedNode">
+    <ng-template let-node pTemplate="testcase">
+      <div *ngIf="node.primary" class="primary">{{node.name}}</div>
+      <div *ngIf="node.dependOn" class="dependent">{{node.name}}</div>
+      <div *ngIf="!node.dependOn && !node.primary">{{node.name}}</div>
+    </ng-template>
+    <ng-template let-node pTemplate="testgroup">
+      <div>{{node.name}}</div>
+    </ng-template>
   </p-tree>
   <p-contextMenu #cm [model]="items" appendTo="body"></p-contextMenu>
 </div>
