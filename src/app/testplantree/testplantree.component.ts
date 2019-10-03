@@ -10,6 +10,7 @@ import * as _ from 'lodash';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CreateTestSuiteDialogComponent } from './create-test-suite-dialog/create-test-suite-dialog.component';
 import { DeleteTestSuiteDialogComponent } from './delete-test-suite-dialog/delete-test-suite-dialog.component';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-testplantree',
@@ -24,7 +25,7 @@ export class TestplantreeComponent implements OnInit {
   loadingIcon: string = "fa-circle-o-notch"
   selectedNode: TreeNode[]
   selectedObject: TestCase | TestGroup | TestSuite | Category
-  menu: any[] = []
+  menu: MenuItem[] = []
 
   constructor(
     private testplanService: TestplantreeService,
@@ -49,11 +50,22 @@ export class TestplantreeComponent implements OnInit {
                 width: '600px',
                 data: this.selectedObject
               })
-  
-              dialogRef.afterClosed().subscribe(cat => {
-                console.log('The dialog was closed', cat);
-                console.log('The dialog was closed', cat instanceof Category);
-                this.cdr.detectChanges()
+              dialogRef.afterClosed().subscribe((cat: Category) => {
+                if(cat) { //click Create instead of cancel
+                  let index = this.categories.findIndex( e => e._id === cat._id)
+                  console.log(index)
+                  this.categories[index] = cat;
+                  console.log('cats', this.categories)
+                  
+                  // this.testPlanTree = this.mapToTree(this.categories)
+                  console.log('testplantree', this.testPlanTree)
+                  this.cdr.detectChanges()  
+                }else{
+                  this.testPlanTree.push({
+                    label: 'fsdfsd'
+                  })
+                  this.cdr.detectChanges()  
+                }
               });
             })
           }}

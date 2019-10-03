@@ -48,7 +48,7 @@ export class CreateTestSuiteDialogComponent implements OnInit {
         console.log('res', res)
         this._snackBar.open(`Create Test Suite successful !`, null, { duration: 2000})
       }
+      this.dialogRef.close(this.cat);
     })
-    this.dialogRef.close(this.cat);
   }
 }
