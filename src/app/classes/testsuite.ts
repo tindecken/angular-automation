@@ -10,7 +10,8 @@ export class TestSuite {
     type: string;
     status: string;
     runningTime: number;
-    workID: string;
+    workId: string;
+    description: string;
     @Type(() => TestGroup)
     testGroups: TestGroup[];
     @Type(() => TestCase)
@@ -22,4 +23,5 @@ export class TestSuite {
     @Type(() => User)
     owner: User;
     createdAt: Date;
+    category: string;
 }

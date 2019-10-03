@@ -19,7 +19,7 @@ import { DeleteTestSuiteDialogComponent } from './delete-test-suite-dialog/delet
 export class TestplantreeComponent implements OnInit {
   filterValue: string = ''
   categories: Category[] = []
-  testPlanTree: any[] = []
+  testPlanTree: TreeNode[]
   loading: boolean = true
   loadingIcon: string = "fa-circle-o-notch"
   selectedNode: TreeNode[]
@@ -34,6 +34,7 @@ export class TestplantreeComponent implements OnInit {
   onNodeSelect(event){
     this.testplanService.getSelectedNode(event.node).subscribe(node => {
       this.selectedObject = node
+      console.log(this.selectedNode)
     })
   }
 
@@ -49,8 +50,10 @@ export class TestplantreeComponent implements OnInit {
                 data: this.selectedObject
               })
   
-              dialogRef.afterClosed().subscribe(result => {
-                console.log('The dialog was closed', result);
+              dialogRef.afterClosed().subscribe(cat => {
+                console.log('The dialog was closed', cat);
+                console.log('The dialog was closed', cat instanceof Category);
+                this.cdr.detectChanges()
               });
             })
           }}
@@ -68,12 +71,7 @@ export class TestplantreeComponent implements OnInit {
               dialogRef.afterClosed().subscribe(result => {
                 console.log('The dialog was closed', result);
               });
-
-              this.testPlanTree.concat({
-                id: 'zzzz',
-                name: 'zzz'
-              })
-              this.cdr.detectChanges()
+              
             })
            } },
         ]
@@ -134,7 +132,7 @@ export class TestplantreeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.testplanService.getCategories().subscribe(categories => {
+    this.testplanService.getCategories().subscribe((categories: Category[]) => {
       this.categories = categories
       this.testPlanTree = this.mapToTree(this.categories)  
       this.loading = false

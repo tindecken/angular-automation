@@ -4,6 +4,8 @@ import { Category } from 'src/app/classes/category';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TestplantreeService } from 'src/app/testplantree.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { plainToClass } from 'class-transformer';
+import { TestSuite } from 'src/app/classes/testsuite';
 
 @Component({
   selector: 'app-create-test-suite-dialog',
@@ -31,7 +33,7 @@ export class CreateTestSuiteDialogComponent implements OnInit {
     })
   }
   createTestSuite(){
-    let payload = {
+    let payload  = {
       name: this.form.value.name,
       description: this.form.value.description,
       workId: this.form.value.workId,
@@ -42,10 +44,11 @@ export class CreateTestSuiteDialogComponent implements OnInit {
         this._snackBar.open(`${res.error}: ${res.message}`, null, { duration: 2000})
       }
       else {
+        this.cat.addTestSuite(plainToClass(TestSuite, res))
+        console.log('res', res)
         this._snackBar.open(`Create Test Suite successful !`, null, { duration: 2000})
       }
     })
-    this.dialogRef.close();
+    this.dialogRef.close(this.cat);
   }
-
 }
