@@ -3,7 +3,7 @@
   <form [formGroup]="form" fxLayout="column">
     <mat-form-field>
       <input matInput placeholder="Name" formControlName="name" cdkFocusInitial>
-      <mat-error *ngIf="form.get('name').hasError">required</mat-error>
+      <mat-error *ngIf="form.get('name').hasError">Min length 3 chars</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="WorkId" formControlName="workId">

@@ -27,7 +27,7 @@ export class CreateTestSuiteDialogComponent implements OnInit {
   }
   ngOnInit() {
     this.form = this.builder.group({
-      name: ['', Validators.required],
+      name: ['', [ Validators.minLength(3), Validators.required]],
       workId: [''],
       description: ['']
     })
@@ -41,11 +41,11 @@ export class CreateTestSuiteDialogComponent implements OnInit {
     }
     this.testPlanService.createTestSuite(payload).subscribe((res: any) => {
       if(res.error) {
-        this._snackBar.open(`${res.error}: ${res.message}`, null, { duration: 2000})
+        this._snackBar.open(`${res.error.error}: ${res.error.message}`, null, { duration: 2000})
       }
       else {
-        this.cat.addTestSuite(plainToClass(TestSuite, res))
         console.log('res', res)
+        this.cat.addTestSuite(plainToClass(TestSuite, res))
         this._snackBar.open(`Create Test Suite successful !`, null, { duration: 2000})
       }
       this.dialogRef.close(this.cat);

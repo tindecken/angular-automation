@@ -11,6 +11,7 @@ export class BaseService {
   httpOptions: Object
 
   constructor() {
+    // this.url = 'http://tindecken.ddns.net:3000/api';
     this.url = 'http://localhost:3000/api';
     this.httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -19,7 +20,7 @@ export class BaseService {
 
   handleError() {
     return catchError((res) => {
-      return of(res.error);
+      return of(res);
     });
   }
 }

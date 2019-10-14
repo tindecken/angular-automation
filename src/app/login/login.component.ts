@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login(this.form.value).subscribe((res: any) => {
       if(res.error) {
-        this._snackBar.open(`${res.error}: ${res.message}`, null, { duration: 2000})
+        this._snackBar.open(`${res.error.error}: ${res.error.message}`, null, { duration: 5000})
         this.loginFailed()
         this.store.dispatch(userLogout)
       }
